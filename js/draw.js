@@ -16,5 +16,8 @@ var draw = {
 	},
 	rankedFever: function(specs){
 		rankedFever.draw(specs);
+	},
+	segmentedRankedFever: function(specs){
+		segmentedRankedFever.draw(specs);
 	}
 }

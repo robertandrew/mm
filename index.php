@@ -31,6 +31,7 @@
 	<script src="js/allCharts.js"></script>
 	<script src="js/simpleFever.js"></script>
 	<script src="js/rankedFever.js"></script>
+	<script src="js/segmentedRankedFever.js"></script>
 	<script src="js/util.js" charset="utf-8"></script>
 	<script src="js/ingest.js" charset="utf-8"></script>
 	<script src="js/transform.js" charset="utf-8"></script>

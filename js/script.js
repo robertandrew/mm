@@ -11,6 +11,7 @@ d3.tsv("data/" + 'specs.tsv',function(error,data){
 			transform.init(specs)
 			draw.init(specs,"simpleFever")
 			draw.init(specs,"rankedFever")
+			draw.init(specs,"segmentedRankedFever")
 		}
 
 		//Call execute for every possile chart type

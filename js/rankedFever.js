@@ -24,7 +24,6 @@ var rankedFever = {
 	liner: function(dataset,specs){
 		//assuming we're at the start of a given period, not the end, generates steps
 		var theseSteps = [];
-		var segSteps = [];
 		dataset.sort(function(a,b){return d3.ascending(a.dateObj,b.dateObj)}).forEach(function(d,i){
 
 			var thisDate = d.dateObj;
@@ -53,23 +52,8 @@ var rankedFever = {
 				dateObj:nextDate - (dateDiff/2),
 				rank: d.rank,
 			})
-			//push the flat bit first
-			segSteps.push({
-				dateObj:thisDate,
-				dateObj2:nextDate - (dateDiff/2),
-				rank: d.rank,
-				rank2: d.rank
-			})
-			//then the slopey bit
-			segSteps.push({
-				dateObj:nextDate - (dateDiff/2),
-				dateObj2: nextDate,
-				rank: d.rank,
-				rank2: d.nxtRank
-			})
 		})
 
-		util.quickTable(segSteps);
 		var lineGenerator = d3.svg.line()
 			.x(function(d){
 				var thisX = specs.scale.x(d.dateObj);
