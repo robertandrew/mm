@@ -83,7 +83,7 @@ var allCharts = {
 				.text(d.key)
 				.attr('x',thisMouse[0] + thisOffset)
 				.attr('y',thisMouse[1] - thisOffset)
-				.classed(util.classFormat(d.key),true)
+				.classed(util.formatClass(d.key),true)
 				.style('opacity',1)
 
 			d3.select(this).classed('on',true)
@@ -91,7 +91,7 @@ var allCharts = {
 		})
 		.on('mousemove',function(d,i){
 			var thisMouse = d3.mouse(this);
-			
+
 			specs[chartType].dom.canvas.key.tooltip
 			.attr('x',thisMouse[0] + thisOffset)
 			.attr('y',thisMouse[1] - thisOffset)

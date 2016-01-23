@@ -17,7 +17,7 @@ var rankedFever = {
 			.remove('path');
 
 		specs.rankedFever.dom.viz.attr('d',function(d){return rankedFever.liner(d.values,specs)})
-			.attr('class',function(d,i){return util.classFormat(d.key)})
+			.attr('class',function(d,i){return util.formatClass(d.key)})
 			.attr('tooltext',function(d,i){return specs.id + " " + d.value})
 
 	},

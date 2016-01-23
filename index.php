@@ -19,7 +19,7 @@
 	</script>
 
 
-	<script src="js/libs/d3.v3.min.js" charset="utf-8"></script>
+	<script src="js/libs/d3.min.js" charset="utf-8"></script>
 	<script src="js/libs/jquery.min.js" charset="utf-8"></script>
 	<script src="js/libs/moment.min.js" charset="utf-8"></script>
 	<script src="js/libs/common.js" charset="utf-8"></script>

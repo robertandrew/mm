@@ -80,10 +80,19 @@ var util = {
 		datapoint = datapoint.replace(/,/g,'')
 		return datapoint;
 	},
-	classFormat: function(datapoint){
+	formatClass: function(datapoint){
 		datapoint = datapoint.replace(/ /g,'')
 		return datapoint.toLowerCase();
 	},
+	cleanDate: function(dateObj){
+	//Turns a date object into something that can be matched without trouble
+	var month = dateObj.getMonth()+1;
+	var day = dateObj.getDate();
+	var year = dateObj.getFullYear();
+
+	return 	month + "/" + day + "/" + year;
+	},
+
     selectDistinct: function(dataset,value){
       //Create an empty array
       var distinctSet = [];

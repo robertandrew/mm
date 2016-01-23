@@ -7,3 +7,4 @@ Consistent things:
 All objects have "tooltext" attribute that contains what their tooltip would say
 All objects have an id based on their chart and datapoint
 All selections are stored in the specs file
+All utility functions start with a verb and then have an object
