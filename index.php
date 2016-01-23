@@ -18,7 +18,7 @@
 
 	</script>
 
-
+	<script src="js/libs/d3-time.js"></script>
 	<script src="js/libs/d3.min.js" charset="utf-8"></script>
 	<script src="js/libs/jquery.min.js" charset="utf-8"></script>
 	<script src="js/libs/moment.min.js" charset="utf-8"></script>
@@ -26,11 +26,9 @@
 	<script src="js/libs/bootstrap.min.js" charset="utf-8"></script>
 	<script src="js/libs/waypoints.min.js"></script>
 	<script src="js/libs/waypoints-sticky.min.js"></script>
-	<script src="js/libs/d3.tip.v0.6.3.js"></script>
 
 	<script src="js/allCharts.js"></script>
 	<script src="js/simpleFever.js"></script>
-	<script src="js/rankedFever.js"></script>
 	<script src="js/segmentedRankedFever.js"></script>
 	<script src="js/util.js" charset="utf-8"></script>
 	<script src="js/ingest.js" charset="utf-8"></script>

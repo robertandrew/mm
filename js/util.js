@@ -110,5 +110,10 @@ var util = {
         }
       })
       return distinctSet;
-    }
+	},
+	loadTimer: function(){
+		var loadTime = window.performance.timing.domContentLoadedEventEnd- window.performance.timing.navigationStart;
+
+		console.log('Loaded in ' + loadTime)
+	}
 }

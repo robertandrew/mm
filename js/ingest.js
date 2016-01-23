@@ -13,7 +13,7 @@ var ingest = {
 
 		specs.data.forEach(function(dD,iD){
 			//Splits the date object to account for weird FRED formatting
-			var dateObj = new Date(dD[specs.dateCol].split('-'));
+			var dateObj = d3_time.timeDay.floor(new Date(dD[specs.dateCol].split('-')));
 
 			var rankDomain = [];
 

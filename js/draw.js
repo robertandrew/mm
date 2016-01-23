@@ -1,26 +1,22 @@
 var draw = {
 	//This should be called just once for each dataset, and once for each chart type within each dataset
-	init: function(specs,chartType){
-		allCharts.dom(specs,chartType);
-		draw.draw(specs,chartType);
+	init: function(specs,chartType,variable){
+		allCharts.dom(specs,chartType,variable);
+		draw.draw(specs,chartType,variable);
 	},
 	//If something needs to be redrawn on resize or whatever, this is where it happens.
-	draw: function(specs,chartType){
-		allCharts.setSize(specs,chartType);
-		allCharts.size(specs,chartType);
-		draw[chartType](specs);
+	draw: function(specs,chartType,variable){
+		allCharts.setSize(specs,chartType,variable);
+		allCharts.size(specs,chartType,variable);
+		draw[chartType](specs,variable);
 	},
 	//Give each chart an object so that it can be called in draw.draw via the passed chartType variable
-	simpleFever: function(specs){
+	simpleFever: function(specs,variable){
 		//Declare the needed transformations for this chart
 		// simpleFever.transformations = ['percentAnnual'];
-		simpleFever.draw(specs);
+		simpleFever.draw(specs,variable);
 	},
-	rankedFever: function(specs){
-		// rankedFever.transformations = ['rank'];
-		rankedFever.draw(specs);
-	},
-	segmentedRankedFever: function(specs){
+	segmentedRankedFever: function(specs,variable){
 		segmentedRankedFever.draw(specs);
 	}
 }

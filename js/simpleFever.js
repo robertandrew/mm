@@ -1,27 +1,26 @@
 var simpleFever = {
-	draw: function(specs){
-		simpleFever.setScale(specs);
-		allCharts.setAxis(specs,'simpleFever');
-		allCharts.callAxis(specs,'simpleFever');
-		simpleFever.viz(specs);
-		allCharts.tooltip(specs,'simpleFever');
+	draw: function(specs,variable){
+		simpleFever.setScale(specs,variable);
+		allCharts.setAxis(specs,'simpleFever',variable);
+		allCharts.callAxis(specs,'simpleFever',variable);
+		simpleFever.viz(specs,variable);
+		allCharts.tooltip(specs,'simpleFever',variable);
 	},
-	viz: function(specs){
-		specs.simpleFever.dom.viz = specs.simpleFever.dom.canvas.select('g.viz').selectAll('path')
+	viz: function(specs,variable){
+		specs.simpleFever[variable].dom.viz = specs.simpleFever[variable].dom.canvas.select('g.viz').selectAll('path')
 			.data(specs.nestedData);
 
-		specs.simpleFever.dom.viz.enter()
+		specs.simpleFever[variable].dom.viz.enter()
 			.append('path');
 
-		specs.simpleFever.dom.viz.exit()
+		specs.simpleFever[variable].dom.viz.exit()
 			.remove('path');
 
-		specs.simpleFever.dom.viz.attr('d',function(d){return simpleFever.liner(d.values,specs)})
+		specs.simpleFever[variable].dom.viz.attr('d',function(d){return simpleFever.liner(d.values,specs,variable)})
 			.attr('class',function(d,i){return util.formatClass(d.key)})
-			.attr('tooltext',function(d,i){return specs.id + " " + d.value})
 
 	},
-	liner: function(dataset,specs){
+	liner: function(dataset,specs,variable){
 		dataset.sort(function(a,b){return d3.ascending(a.dateObj,b.dateObj)})
 		var lineGenerator = d3.svg.line()
 			.x(function(d){
@@ -33,7 +32,7 @@ var simpleFever = {
 				}
 			})
 			.y(function(d){
-				var thisY = specs.scale.y(d.value);
+				var thisY = specs.scale.y(d[variable]);
 				if(isNaN(thisY)== true ){
 					console.log(d.date + " y isNaN with " + d.key)
 				} else {
@@ -44,14 +43,14 @@ var simpleFever = {
 
 		return lineGenerator(dataset);
 	},
-	setScale: function(specs){
+	setScale: function(specs,variable){
 		specs.scale = {
 			x:d3.time.scale()
 				.domain([d3.min(specs.flatData,function(d,i){
 					return d.dateObj }), new Date()])
 				.range([0,specs.width]),
 			y:d3.scale.linear()
-				.domain(d3.extent(specs.flatData,function(d,i){return d.value}))
+				.domain(d3.extent(specs.flatData,function(d,i){return d[variable]}))
 				.range([specs.height,0])
 		}
 	},

@@ -6,17 +6,26 @@ var transform = {
 		}
 	},
 	percentAnnual: function(specs) {
-		//
-		console.log(specs)
-		console.log(specs.flatData[20])
-
 		//First, we go through each key individually
 		//And set a scale to return the identical date a year later
-		//And if it doesn't exist, return undefined?
-
+		//And if it doesn't exist, return undefined
+		console.log("percentages calculated")
 		specs.keys.forEach(function(dK,iK){
-			thisSet = specs.flatData.filter(function(f){return f.key == dK});
-			
+			var thesePoints = specs.flatData.filter(function(f){return f.key == dK});
+			var getData = d3.scale.ordinal().domain(thesePoints.map(function(m){return (m.dateObj)}))
+				.range(thesePoints.map(function(m){return m}))
+
+			thesePoints.forEach(function(dP,iP){
+				var thisDay = (dP.dateObj);
+				var previousYear = d3_time.timeYear.offset(thisDay,-1)
+				var previousData = getData(previousYear);
+				if(previousData.value == undefined){
+					//It defaults to the first date in the series, I think.
+					console.log(previousData)
+				} else {
+					dP.yoy = ((dP.value - previousData.value)/previousData.value)*100;
+				}
+			})
 		})
 	}
 }
