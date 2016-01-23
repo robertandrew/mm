@@ -1,36 +1,3 @@
-var grey6 ='#231f20';
-var grey5 ='#333333';
-var grey4 ='#727272';
-var grey3 ='#bfbfbf';
-var grey2 ='#e2e3e4';
-var grey1 ='#eeeff0';
-var yellow3 ='#c3a730';
-var yellow2 ='#edc639';
-var yellow1 ='#ffd63d';
-var tan2 ='#eee2bd';
-var tan1 ='#f5eeda';
-var brown2 ='#bfb980';
-var brown1 ='#dedab9';
-var orange3 ='#e29320';
-var orange2 ='#f9a224';
-var orange1 ='#fdc47c';
-var red3 ='#ce3139';
-var red2 ='#ee3a43';
-var red1 ='#fcd6ca';
-var blue5 ='#0079ae';
-var blue4 ='#0098db';
-var blue3 ='#95cbee';
-var blue2 ='#c9e2f5';
-var blue1 ='#e6eff9';
-var green5 ='#52a045';
-var green4 ='#63bc51';
-var green3 ='#a2d292';
-var green2 ='#c6e2ba';
-var green1 ='#e6f2e1';
-var purple2 ='#bb2b77';
-var purple1 ='#d991b2';
-
-
 var util = {
     destroyTransitions: function(selector){
         //Fantastic obliterator of transitions that I borrowed and modified from Mike Bostock and friends

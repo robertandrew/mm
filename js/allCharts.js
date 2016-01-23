@@ -16,7 +16,7 @@ var allCharts = {
 			.attr('id',specs.id + chartType);
 
 		specs[chartType].dom.div.append('h3')
-			.text(specs.id);
+			.text(specs.description);
 
 		specs[chartType].dom.svg = specs[chartType].dom.div.append('svg');
 
@@ -74,19 +74,27 @@ var allCharts = {
 			.call(specs.axis.y);
 	},
 	tooltip: function(specs,chartType){
+		var thisOffset = 5;
 		specs[chartType].dom.viz.on('mouseover',function(d,i){
 
 			var thisMouse = d3.mouse(this);
 
 			specs[chartType].dom.canvas.key.tooltip
 				.text(d.key)
-				.attr('x',thisMouse[0] + 5)
-				.attr('y',thisMouse[1] - 5)
+				.attr('x',thisMouse[0] + thisOffset)
+				.attr('y',thisMouse[1] - thisOffset)
 				.classed(util.classFormat(d.key),true)
 				.style('opacity',1)
 
 			d3.select(this).classed('on',true)
 
+		})
+		.on('mousemove',function(d,i){
+			var thisMouse = d3.mouse(this);
+			
+			specs[chartType].dom.canvas.key.tooltip
+			.attr('x',thisMouse[0] + thisOffset)
+			.attr('y',thisMouse[1] - thisOffset)
 		})
 		.on('mouseout',function(d,i){
 			specs[chartType].dom.canvas.key.tooltip

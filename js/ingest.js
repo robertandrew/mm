@@ -12,7 +12,6 @@ var ingest = {
 		specs.flatData = [];
 
 		specs.data.forEach(function(dD,iD){
-			console.log(specs.dateCol)
 			//Splits the date object to account for weird FRED formatting
 			var dateObj = new Date(dD[specs.dateCol].split('-'));
 
