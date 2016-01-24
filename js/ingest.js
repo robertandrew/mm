@@ -1,14 +1,15 @@
 var ingest = {
 	init: function(specs,error,data){
-		ingest.execute(specs,error,data);
-	},
-	execute: function(specs,error,data){
 		specs.data = data;
+		ingest.addKeysAndDates(specs)
 		ingest.unpivot(specs);
 		ingest.nest(specs);
 	},
-	unpivot: function(specs){
+	addKeysAndDates: function(specs) {
 		specs.keys = d3.keys(specs.data[0]).filter(function(f){return f != specs.dateCol});
+		specs.dates = specs.data.map(function(d){return d[specs.dateCol]})
+	},
+	unpivot: function(specs){
 		specs.flatData = [];
 
 		specs.data.forEach(function(dD,iD){
