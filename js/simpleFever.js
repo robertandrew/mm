@@ -18,10 +18,9 @@ var simpleFever = {
 
 		specs.simpleFever[variable].dom.viz.attr('d',function(d){return simpleFever.liner(d.values,specs,variable)})
 			.attr('class',function(d,i){return util.formatClass(d.key)})
-
 	},
 	liner: function(dataset,specs,variable){
-		dataset.sort(function(a,b){return d3.ascending(a.dateObj,b.dateObj)})
+		var lineSet = dataset.sort(function(a,b){return d3.ascending(a.dateObj,b.dateObj)}).filter(function(f){return f[variable]!=undefined})
 		var lineGenerator = d3.svg.line()
 			.x(function(d){
 				var thisX = specs.scale.x(d.dateObj);
@@ -39,9 +38,9 @@ var simpleFever = {
 					return thisY;
 				}
 			})
-			.interpolate('cardinal')
+			// .interpolate('cardinal')
 
-		return lineGenerator(dataset);
+		return lineGenerator(lineSet);
 	},
 	setScale: function(specs,variable){
 		specs.scale = {

@@ -9,9 +9,10 @@ d3.tsv("data/" + 'specs.tsv',function(error,data){
 		function execute(specs,error,data){
 			ingest.init(specs,error,data)
 			transform.init(specs)
-			draw.init(specs,"simpleFever",'yoy')
-			draw.init(specs,"simpleFever",'value')
-			draw.init(specs,"simpleFever",'rank')
+			// draw.init(specs,"simpleFever",'yoy')
+			// draw.init(specs,"simpleFever",'value')
+			draw.init(specs,"simpleFever",'yoyRank')
+			draw.init(specs,"simpleFever",'valueRank')
 
 			// draw.init(specs,"segmentedRankedFever")
 		}

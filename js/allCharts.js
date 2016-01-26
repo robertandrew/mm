@@ -81,26 +81,48 @@ var allCharts = {
 	},
 	tooltip: function(specs,chartType,variable){
 		var thisOffset = 5;
+
+		var tip = {direction:'left',
+			xOffset:-5,
+			yOffset:5,
+			anchor:'start',
+			}
+
+		function setDirection(coord){
+			if(coord[0]<=specs.width/2){
+				tip.direction = "left";
+				tip.xOffset = -5;
+				tip.anchor = 'start';
+			} else {
+				tip.direction = "right";
+				tip.xOffset = 5;
+				tip.anchor = 'end';
+			}
+		}
+
 		specs[chartType][variable].dom.viz.on('mouseover',function(d,i){
 
 			var thisMouse = d3.mouse(this);
+			setDirection(thisMouse);
 
 			specs[chartType][variable].dom.canvas.key.tooltip
 				.text(d.key)
-				.attr('x',thisMouse[0] + thisOffset)
-				.attr('y',thisMouse[1] - thisOffset)
-				.classed(util.formatClass(d.key),true)
+				.attr('x',thisMouse[0] + tip.xOffset)
+				.attr('y',thisMouse[1] + tip.yOffset)
 				.style('opacity',1)
+				.style('text-anchor',tip.anchor)
 
 			d3.select(this).classed('on',true)
 
 		})
 		.on('mousemove',function(d,i){
 			var thisMouse = d3.mouse(this);
+			setDirection(thisMouse);
 
 			specs[chartType][variable].dom.canvas.key.tooltip
-			.attr('x',thisMouse[0] + thisOffset)
-			.attr('y',thisMouse[1] - thisOffset)
+			.attr('x',thisMouse[0] + tip.xOffset)
+			.attr('y',thisMouse[1] + tip.yOffset)
+			.style('text-anchor',tip.anchor)
 		})
 		.on('mouseout',function(d,i){
 			specs[chartType][variable].dom.canvas.key.tooltip

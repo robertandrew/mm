@@ -16,18 +16,6 @@ var ingest = {
 			//Splits the date object to account for weird FRED formatting
 			var dateObj = d3_time.timeDay.floor(new Date(dD[specs.dateCol].split('-')));
 
-			var rankDomain = [];
-
-			specs.keys.forEach(function(dC,iC){
-				rankDomain.push(+dD[dC])
-			})
-
-			rankDomain.sort(function(a,b){return d3.descending(a,b)});
-
-			var rankScale = d3.scale.ordinal()
-				.domain(rankDomain)
-				.range(d3.range(1,rankDomain.length+1))
-
 			specs.keys.forEach(function(dC,iC){
 				var thisValue = dD[dC];
 				if(thisValue.search(/([A-Z]|[_,!@#$%^&*();\/"'])/g)==-1){
@@ -36,7 +24,6 @@ var ingest = {
 						dateObj:dateObj,
 						value:+thisValue,
 						key:dC,
-						rank:rankScale(thisValue)
 					})
 				} else {console.log(specs.id + " series " + dC + " on " + dD.date + " is " + dD[dC] + ", which contains characters we should probably worry about")}
 			})
