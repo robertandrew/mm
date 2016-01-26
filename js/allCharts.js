@@ -22,7 +22,7 @@ var allCharts = {
 			.attr('id',specs.id + chartType + variable);
 
 		specs[chartType][variable].dom.div.append('h3')
-			.text(specs.description);
+			.text(specs.description + " (" + variable + ")");
 
 		specs[chartType][variable].dom.svg = specs[chartType][variable].dom.div.append('svg');
 
@@ -80,26 +80,30 @@ var allCharts = {
 			.call(specs.axis.y);
 	},
 	tooltip: function(specs,chartType,variable){
-		var thisOffset = 5;
+		//One place to set the x and y offsets, because why not?
+		var thisOffset = 8;
 
+		//Object is pre-loaded with default tooltip positioning, which is for reference, mostly.
 		var tip = {direction:'left',
-			xOffset:-5,
-			yOffset:5,
+			xOffset:-thisOffset,
+			yOffset:thisOffset,
 			anchor:'start',
 			}
 
+		//Set right-handed or left-handed tooltipping, to be called on mousemove and mouseover
 		function setDirection(coord){
 			if(coord[0]<=specs.width/2){
 				tip.direction = "left";
-				tip.xOffset = -5;
+				tip.xOffset = thisOffset;
 				tip.anchor = 'start';
 			} else {
 				tip.direction = "right";
-				tip.xOffset = 5;
+				tip.xOffset = -thisOffset;
 				tip.anchor = 'end';
 			}
 		}
 
+		//Tooltip appears on mouseover...
 		specs[chartType][variable].dom.viz.on('mouseover',function(d,i){
 
 			var thisMouse = d3.mouse(this);
@@ -115,6 +119,7 @@ var allCharts = {
 			d3.select(this).classed('on',true)
 
 		})
+		//...moves when the mouse moves...
 		.on('mousemove',function(d,i){
 			var thisMouse = d3.mouse(this);
 			setDirection(thisMouse);
@@ -124,6 +129,7 @@ var allCharts = {
 			.attr('y',thisMouse[1] + tip.yOffset)
 			.style('text-anchor',tip.anchor)
 		})
+		//And exits when the mouse exits.
 		.on('mouseout',function(d,i){
 			specs[chartType][variable].dom.canvas.key.tooltip
 				.text('')

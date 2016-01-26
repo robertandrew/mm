@@ -20,7 +20,7 @@ var simpleFever = {
 			.attr('class',function(d,i){return util.formatClass(d.key)})
 	},
 	liner: function(dataset,specs,variable){
-		var lineSet = dataset.sort(function(a,b){return d3.ascending(a.dateObj,b.dateObj)}).filter(function(f){return f[variable]!=undefined})
+		var lineSet = dataset.sort(function(a,b){return d3.ascending(a.dateObj,b.dateObj)}).filter(function(f){return (f[variable]!=undefined && isNaN(f[variable])==false)})
 		var lineGenerator = d3.svg.line()
 			.x(function(d){
 				var thisX = specs.scale.x(d.dateObj);
@@ -33,7 +33,7 @@ var simpleFever = {
 			.y(function(d){
 				var thisY = specs.scale.y(d[variable]);
 				if(isNaN(thisY)== true ){
-					console.log(d.date + " y isNaN with " + d.key)
+					// console.log(d.date + " y isNaN with " + d.key)
 				} else {
 					return thisY;
 				}

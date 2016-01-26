@@ -13,7 +13,6 @@ var draw = {
 	//Give each chart an object so that it can be called in draw.draw via the passed chartType variable
 	simpleFever: function(specs,variable){
 		//Declare the needed transformations for this chart
-		// simpleFever.transformations = ['percentAnnual'];
 		simpleFever.draw(specs,variable);
 	},
 	segmentedRankedFever: function(specs,variable){

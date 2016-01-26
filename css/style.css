@@ -84,9 +84,11 @@
 /* line 105, ../sass/style.scss */
 #charts .viz path.videotapeanddiscrental {
   stroke: #ee3a43;
+  stroke-width: 3;
+  opacity: 1;
 }
 
-/* line 119, ../sass/style.scss */
+/* line 117, ../sass/style.scss */
 .tooltip {
   font-weight: 600;
   font-size: 130%;
