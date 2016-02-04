@@ -38,6 +38,10 @@
 		$online: 2;
 		$offline: 0.5;
 
+		rect {
+			fill: grey;
+		}
+
 		path {
 			fill: none;
 			stroke-width:$offline;
@@ -107,6 +111,7 @@
 				stroke-width:3;
 				opacity:1;
 			}
+
 
 		}
 

@@ -19,7 +19,7 @@ var allCharts = {
 
 		specs[chartType][variable].dom.div = d3.select('#charts')
 			.append('div')
-			.attr('id',specs.id + chartType + variable);
+			.attr('class',specs.id + " " + chartType + " " + variable);
 
 		specs[chartType][variable].dom.div.append('h3')
 			.text(specs.description + " (" + variable + ")");

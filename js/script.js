@@ -9,13 +9,15 @@ d3.tsv("data/" + 'specs.tsv',function(error,data){
 		function execute(specs,error,data){
 			ingest.init(specs,error,data)
 			transform.init(specs)
-			// draw.init(specs,"simpleFever",'yoy')
-			// draw.init(specs,"simpleFever",'value')
-			draw.init(specs,"simpleFever",'steps')
-			draw.init(specs,"simpleFever",'valueYoy')
-			draw.init(specs,"simpleFever",'valueRank')
-			draw.init(specs,"simpleFever",'value12periodAverageYoy')
-			draw.init(specs,"simpleFever",'value12periodAverageYoyRank')
+			// draw.init(specs,"simpleFever",'steps')
+			draw.init(specs,"horizontalBars","upsDowns")
+
+			// draw.init(specs,"simpleFever",'valueYoy')
+			// draw.init(specs,"simpleFever",'valueRank')
+
+
+			// draw.init(specs,"simpleFever",'value12periodAverageYoy')
+			// draw.init(specs,"simpleFever",'value12periodAverageYoyRank')
 
 
 

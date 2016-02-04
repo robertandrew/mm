@@ -1,5 +1,7 @@
 var simpleFever = {
 	draw: function(specs,variable){
+		allCharts.setSize(specs,'simpleFever',variable);
+		allCharts.size(specs,'simpleFever',variable);
 		simpleFever.setScale(specs,variable);
 		allCharts.setAxis(specs,'simpleFever',variable);
 		allCharts.callAxis(specs,'simpleFever',variable);
