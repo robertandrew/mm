@@ -1,0 +1,20 @@
+{
+  "name": "express",
+  "version": "1.0.0",
+  "description": "It's a test.",
+  "main": "indian.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "tktk"
+  ],
+  "author": "avd",
+  "license": "ISC",
+  "dependencies": {
+    "d3": "^3.5.14",
+    "express": "^4.13.4",
+    "gulp": "^3.9.0"
+  },
+  "devDependencies": {}
+}
